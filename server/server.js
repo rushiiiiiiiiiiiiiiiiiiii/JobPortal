@@ -25,12 +25,12 @@ app.use(express.static('images'));
 const server = http.createServer(app); // Create an HTTP server
 const io = new Server(server, {
     cors: {
-        origin: 'https://job-portal-client-psi.vercel.app', // Your client URL
-        methods: ['GET', 'POST'],
-        credentials: true,
-        allowedHeaders: ["Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Authorization"]
-    }
+        origin: 'https://job-portal-client-psi.vercel.app',
+        methods: ['GET', 'POST']
+    },
+    path: "/socket.io",
 });
+
 
 
 // Socket.IO Connection Handling
