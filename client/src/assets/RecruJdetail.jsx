@@ -20,7 +20,7 @@ const RecruJdetail = () => {
   // Fetch applied data
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getapplied/${jid}`)
+      .get(`http://https://job-portal-server-orpin.vercel.app/getapplied/${jid}`)
       .then((res) =>{ 
         console.log(res.data)
         setCandidate(res.data.length)
@@ -32,14 +32,14 @@ const RecruJdetail = () => {
   // Fetch user data
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getuser/${uid}`)
+      .get(`https://job-portal-server-orpin.vercel.app/getuser/${uid}`)
       .then((res) => setUserdata(res.data))
       .catch((err) => setError("Failed to load user data"));
   }, [uid]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getalluser`)
+      .get(`https://job-portal-server-orpin.vercel.app/getalluser`)
       .then((res) => {
         console.log(res.data)
         setUseralldata(res.data)})
@@ -49,7 +49,7 @@ const RecruJdetail = () => {
   // Fetch job details
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/showjobinfo/${jid}`)
+      .get(`https://job-portal-server-orpin.vercel.app/showjobinfo/${jid}`)
       .then((res) => setJobdata(res.data))
       .catch((err) => setError("Failed to load job details"));
   }, [jid]);
@@ -57,7 +57,7 @@ const RecruJdetail = () => {
   // Fetch all jobs
   useEffect(() => {
     axios
-      .get("http://localhost:3001/showjob")
+      .get("https://job-portal-server-orpin.vercel.app/showjob")
       .then((res) => setDatajob(res.data || []))
       .catch((err) => setError("Failed to load jobs"));
   }, []);
@@ -65,8 +65,8 @@ const RecruJdetail = () => {
   // Apply for a job
   const send = async (jobid) => {
     try {
-      await axios.post("http://localhost:3001/jobapplay", { uid, jobid });
-      const res = await axios.get(`http://localhost:3001/getapplied/${jid}`);
+      await axios.post("https://job-portal-server-orpin.vercel.app/jobapplay", { uid, jobid });
+      const res = await axios.get(`https://job-portal-server-orpin.vercel.app/getapplied/${jid}`);
       setApplaydata(res.data || []);
       setError(null); // Clear any previous errors
     } catch (err) {
