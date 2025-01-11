@@ -6,6 +6,7 @@ import { FaPaperPlane } from "react-icons/fa";
 const socket = io('https://job-portal-server-orpin.vercel.app', {
   withCredentials: true,
   transports: ['websocket', 'polling'],
+  debug:true,
 });
 
 const Chat = ({ uid }) => {
