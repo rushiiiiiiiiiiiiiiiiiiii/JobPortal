@@ -14,7 +14,7 @@ const ResumePersnolModel = require('./Schemas/ResumePersnol')
 const ResumeSummaryModel = require('./Schemas/ResumeSummary')
 app.use(
     cors({
-        origin: 'http://localhost:5173',
+        origin: 'https://job-portal-client-psi.vercel.app/',
         credentials: true,
     })
 );
@@ -26,7 +26,7 @@ const { Server } = require('socket.io');
 const server = http.createServer(app); // Create an HTTP server
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5173', // Update with your frontend URL
+        origin: 'https://job-portal-client-psi.vercel.app/', // Update with your frontend URL
         methods: ['GET', 'POST']
     }
 });
