@@ -18,7 +18,7 @@ const Chat = ({ uid }) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3001/getuser/${uid}`)
+            .get(`https://job-portal-server-orpin.vercel.app/getuser/${uid}`)
             .then((res) => {
                 setUserdata(res.data);
                 fetchMessages();
@@ -38,7 +38,7 @@ const Chat = ({ uid }) => {
 
     const fetchMessages = () => {
         axios
-            .post('http://localhost:3001/getchat', { uid, rid })
+            .post('https://job-portal-server-orpin.vercel.app/getchat', { uid, rid })
             .then((res) => {
                 setGetessage(res.data);
                 scrollToBottom();
