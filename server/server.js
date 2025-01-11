@@ -24,17 +24,20 @@ app.use(express.static('images'));
 
 const server = http.createServer(app); // Create an HTTP server
 const io = new Server(server, {
-  cors: {
-    origin: 'https://job-portal-client-psi.vercel.app',
-    methods: ['GET', 'POST']
-  }
+    cors: {
+        origin: 'https://job-portal-client-psi.vercel.app', // Your client URL
+        methods: ['GET', 'POST'],
+        credentials: true,
+        allowedHeaders: ["Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Authorization"]
+    }
 });
+
 
 // Socket.IO Connection Handling
 io.on('connection', (socket) => {
     console.log('A user connected: ', socket.id);
 
-//     // Listen for chat messages
+     // Listen for chat messages
     socket.on('sendMessage', (messageData) => {
         // Save the message to the database
         const { uid, rid, message } = messageData;
