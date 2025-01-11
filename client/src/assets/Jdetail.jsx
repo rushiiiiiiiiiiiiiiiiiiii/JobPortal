@@ -134,7 +134,7 @@ const Jdetails = () => {
         </section>
 
         {userdata?.type === "candidate" ? (
-          <section className="container mx-auto px-6 py-6">
+          <section className="container mx-auto px-6 py-6 ">
 
             {
            // applaydata?.jobid === jobdata?._id &&  applaydata?.uid === uid ? (

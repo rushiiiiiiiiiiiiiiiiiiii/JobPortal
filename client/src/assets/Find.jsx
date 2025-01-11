@@ -81,16 +81,18 @@ const Find = () => {
   }, [uid]);
 
   return (
-    <Layout>
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white font-sans">
-        <header className="bg-gray-800 p-5 text-center shadow-lg">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+    <Layout>
+       
+       
+
+        <div className="container pt-10 mx-auto px-4 py-6 sm:py-10">
+        <header  className="  p-5  text-center shadow-lg">
+          <h1 className="text-4xl sm:text-5xl font-bold mb- text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             Latest Jobs
           </h1>
         </header>
-
-        <div className="container mx-auto px-4 py-6 sm:py-10">
-          {userdata?.type == "candidate" ? (
+          {userdata?.type === "candidate" && (
             <div className="flex flex-wrap items-center justify-center gap-6 mb-8 space-y-4 sm:space-y-0">
               <input
                 type="text"
@@ -134,9 +136,8 @@ const Find = () => {
                 Clear Filters
               </button>
             </div>
-          ) : (
-            ""
           )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {data
               .filter((job) => {
@@ -167,7 +168,7 @@ const Find = () => {
                   <p className="text-sm text-gray-400 mb-4">{job.desc}</p>
                   <div className="flex justify-between items-center text-gray-400 text-sm">
                     <span>📍 {job.location}</span>
-                    {userdata && userdata.type === "candidate" ? (
+                    {userdata && userdata.type === "candidate" && (
                       <div>
                         {likedJobs[job._id] ? (
                           <button
@@ -185,7 +186,7 @@ const Find = () => {
                           </button>
                         )}
                       </div>
-                    ) : ""}
+                    )}
 
                     <Link to={`/jdetail/${job._id}`}>
                       <button className="text-blue-400 hover:underline focus:outline-none">
@@ -197,8 +198,9 @@ const Find = () => {
               ))}
           </div>
         </div>
-      </div>
     </Layout>
+
+      </div>
   );
 };
 

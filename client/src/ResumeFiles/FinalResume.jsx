@@ -5,6 +5,7 @@ import axios from 'axios';
 import html2pdf from "html2pdf.js";
 import { FaDownload, FaShareAlt } from 'react-icons/fa';
 import { MdDashboard } from "react-icons/md";
+import Layout from '../Reuse/Layout';
 
 const FinalResume = () => {
   const [resumedata, setResumedata] = useState([]);
@@ -59,7 +60,8 @@ const FinalResume = () => {
   const resume = resumedata.length > 0 ? resumedata[0] : {};
 
   return (
-    <div className="bg-white max-w-4xl mx-auto p-6">
+    <Layout>
+    <div className="bg-white max-w-4xl mx-auto pt-16 p-6">
       <h2 className="text-center text-2xl font-medium">Congratulations! Your resume is generated</h2>
       <p className="text-center text-gray-400 mb-6">
         Now you can share or download your resume
@@ -71,13 +73,13 @@ const FinalResume = () => {
           className="bg-red-500 flex text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300"
           onClick={handleDownload}
         >
-          Download Resume <FaDownload className="mt-1 ml-2" />
+          Download <FaDownload className="mt-1 ml-2" />
         </button>
         <button
           className="bg-blue-500 flex text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
           onClick={handleShare}
         >
-          Share Resume <FaShareAlt className="mt-1 ml-2" />
+          Share <FaShareAlt className="mt-1 ml-2" />
         </button>
        <Link to='/start'><button
           className="bg-green-500 flex text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300"
@@ -152,6 +154,7 @@ const FinalResume = () => {
 
       </div>
     </div>
+    </Layout>
   );
 };
 

@@ -59,7 +59,7 @@ function Start() {
   return (
     <Layout>
       <div className="bg-gray-900 min-h-screen px-6 py-8">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 pt-10">
           <h1 className="text-4xl font-bold text-purple-700">My Resume Dashboard</h1>
           <p className="mt-2 text-lg text-gray-500">Manage your AI-powered resumes for job applications.</p>
         </div>
@@ -107,7 +107,7 @@ function Start() {
                 <div className="relative">
                   <button
                     onClick={() => toggleModal(data._id)} // Toggle the modal for the specific resume
-                    className="bg-gray-100 ml-64 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
+                    className="bg-gray-100 ml-56 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
                   >
                     <svg
                       className="w-6 h-6 text-gray-700"

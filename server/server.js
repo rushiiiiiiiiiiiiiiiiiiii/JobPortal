@@ -20,6 +20,43 @@ app.use(
 );
 app.use(express.json())
 app.use(express.static('images'));
+const http = require('http');
+const { Server } = require('socket.io');
+
+const server = http.createServer(app); // Create an HTTP server
+const io = new Server(server, {
+    cors: {
+        origin: 'http://localhost:5173', // Update with your frontend URL
+        methods: ['GET', 'POST']
+    }
+});
+
+// Socket.IO Connection Handling
+io.on('connection', (socket) => {
+    console.log('A user connected: ', socket.id);
+
+    // Listen for chat messages
+    socket.on('sendMessage', (messageData) => {
+        // Save the message to the database
+        const { uid, rid, message } = messageData;
+        ChatModel.create({ uid, rid, message })
+            .then(() => {
+                // Emit the message to both sender and receiver
+                io.emit(`chat:${uid}:${rid}`, messageData);
+                io.emit(`chat:${rid}:${uid}`, messageData);
+            })
+            .catch(err => console.error(err));
+    });
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected: ', socket.id);
+    });
+});
+
+server.listen(3001, () => {
+    console.log('Server running on port 3001');
+});
+
 
 const con = mongoose.connect('mongodb://127.0.0.1:27017/job')
 if (con) {
@@ -191,9 +228,9 @@ app.delete('/deljob/:id', (req, res) => {
         .catch(err => res.json(err))
 });
 
-app.listen(3001, () => {
-    console.log("running")
-})
+// app.listen(3001, () => {
+//     console.log("running")
+// })
 
 //Resume Backend Queries
 app.post('/resumename', (req, res) =>   {

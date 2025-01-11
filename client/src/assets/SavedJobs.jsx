@@ -37,16 +37,17 @@ const SavedJobs = () => {
   return (
     <Layout>
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white font-sans">
-        <header className="bg-gray-800 p-5 text-center shadow-lg">
+      
+
+        <div className="container mx-auto px-4 py-6 sm:py-10">
+        <header className=" pt-10  p-5 text-center shadow-lg">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             Saved Jobs
           </h1>
-          <p className="text-lg sm:text-xl text-gray-400 mb-8">
+          <p className="text-lg sm:text-xl text-gray-400 mb-2">
            The jobs that you have liked
          </p>
         </header>
-
-        <div className="container mx-auto px-4 py-6 sm:py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {datalike.length > 0 ? (
               [...datalike].reverse().slice().map((job, index) => {

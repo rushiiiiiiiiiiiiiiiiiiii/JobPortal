@@ -11,6 +11,17 @@ const Searchchat = () => {
 
   const userid = sessionStorage.getItem("userid");
 
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:3001/getapplied/${jid}`)
+  //     .then((res) =>{ 
+  //       console.log(res.data)
+  //       setCandidate(res.data.length)
+  //       setApplaydata(res.data || [])
+  //     })
+  //     .catch((err) => setError("Failed to load applied data"));
+  // }, [jid]);
+
   useEffect(() => {
     axios
       .get(`http://localhost:3001/getuser/${userid}`)

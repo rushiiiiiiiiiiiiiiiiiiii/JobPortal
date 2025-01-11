@@ -1,9 +1,24 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../Reuse/Layout'
+import axios from 'axios';
 
 const Home2 = () => {
+  const [userdata, setUserdata] = useState(null);
+ const uid= sessionStorage.getItem("userid")
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/getuser/${uid}`)
+      .then((res) => {
+        // console.log(res.data)
+        setUserdata(res.data)
+      })
+      .catch((err) => setError("Failed to load user data"));
+  }, [uid]);
+  const no = ()=>{
+    alert("You are a Candidate First login as a Recruiter");
+  }
   return (
     <Layout>
     <div className="bg-dark text-white min-h-auto font-sans">
@@ -23,9 +38,16 @@ const Home2 = () => {
           <Link to='/find'><button className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white px-28 py-8 rounded-lg shadow-lg">
              Candidate
            </button></Link>
+           {
+            userdata?.type=="candidate"?
+           <Link onClick={no}><button className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-700 hover:to-red-900 text-white px-28 py-8 rounded-lg shadow-lg">
+             Recruiter
+           </button></Link>
+           :
            <Link to='/addjob'><button className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-700 hover:to-red-900 text-white px-28 py-8 rounded-lg shadow-lg">
              Recruiter
            </button></Link>
+           }
          </div>
 
 </div>

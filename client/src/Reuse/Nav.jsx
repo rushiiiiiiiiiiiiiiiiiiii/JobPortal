@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Login from '../Login/Login';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { FaBell, FaFonticonsFi } from 'react-icons/fa';
+import { FaBell } from 'react-icons/fa';
 
 const Nav = () => {
     const [login, setLogin] = useState(false);
@@ -56,24 +56,32 @@ const Nav = () => {
         <div className="bg-gray-900 shadow-lg text-white font-sans relative">
             {login && <Login setLogin={setLogin} />}
 
+            {/* Logo */}
             <div className="absolute top-5 left-4 sm:left-8 flex items-center">
                 <img
-                    src="./public/image/logo.png"
+                    src='../public/image/logo.png'
                     alt="Hircd Logo"
                     className="h-8 sm:h-10"
                 />
             </div>
-            <Link to={'/chatsearch'}><div className='absolute top-7 right-14 sm:right-28 sm:text-2xl cursor-pointer'><FaBell/></div></Link>
 
-            <div className="absolute top-5 right-20 sm:right-44">
+            {/* Notification Icon */}
+            <Link to="/chatsearch">
+                <div className="absolute top-7 right-16 sm:right-28 text-xl sm:text-2xl cursor-pointer">
+                    <FaBell />
+                </div>
+            </Link>
+
+            {/* Generate Resume Button */}
+            <div className="absolute top-5 right-32 sm:right-44">
                 <Link to="/start">
-                    <button className="flex bg-gray-600 text-white px-3 py-2 rounded-lg font-medium shadow-lg hover:bg-gray-100 hover:text-black transition duration-200 text-sm sm:text-base">
+                    <button className="flex bg-gray-600 text-white px-3 sm:px-4 py-2 rounded-lg font-medium shadow-lg hover:bg-gray-100 hover:text-black transition duration-200 text-xs sm:text-sm lg:text-base">
                         ✨ Generate Resume
                     </button>
-
                 </Link>
             </div>
 
+            {/* Login/Dropdown */}
             {isLoggedIn ? (
                 <div className="absolute top-5 right-4 sm:right-8 dropdown">
                     <img
@@ -142,7 +150,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-//different
-  // Array.isArray(applaydata) &&
-            //   applaydata.some((job) => String(job.jobid) === String(jobdata?._id)) ?
