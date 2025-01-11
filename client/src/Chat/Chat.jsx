@@ -65,7 +65,7 @@ const Chat = ({ uid }) => {
             <div className="flex items-center bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-t-lg shadow-md">
                 <img
                     className="w-12 h-12 rounded-full object-cover border-2 border-white"
-                    src={`http://localhost:3001/${userdata?.image || ""}`}
+                    src={`https://job-portal-server-orpin.vercel.app/${userdata?.image || ""}`}
                     alt={userdata?.name || "User"}
                 />
                 <div className="ml-4">
