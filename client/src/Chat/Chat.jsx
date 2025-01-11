@@ -3,7 +3,10 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa";
 
-const socket = io('https://job-portal-server-orpin.vercel.app'); // Replace with your server URL
+const socket = io('https://job-portal-server-orpin.vercel.app', {
+  withCredentials: true,
+  transports: ['websocket', 'polling'],
+});
 
 const Chat = ({ uid }) => {
     const [message, setMessage] = useState("");
