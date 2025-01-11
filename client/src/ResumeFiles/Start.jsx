@@ -33,7 +33,7 @@ function Start() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/getresumealldata")
+      .get("https://job-portal-server-orpin.vercel.app/getresumealldata")
       .then((res) => {
         setResumeAlldata(res.data);
       })
@@ -42,7 +42,7 @@ function Start() {
 
   const del = (id) => {
     axios
-      .delete(`http://localhost:3001/delresume/${id}`)
+      .delete(`https://job-portal-server-orpin.vercel.app/delresume/${id}`)
       .then((res) => {
         window.location.reload()
         console.log(res.data);
