@@ -3,10 +3,10 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa";
 
-const socket = io('https://job-portal-server-orpin.vercel.app', {
-  withCredentials: true,
-  transports: ['websocket', 'polling'],
-});
+// const socket = io('https://job-portal-server-orpin.vercel.app', {
+//   withCredentials: true,
+//   transports: ['websocket', 'polling'],
+// });
 
 const Chat = ({ uid }) => {
     const [message, setMessage] = useState("");
@@ -29,38 +29,39 @@ const Chat = ({ uid }) => {
             .catch((err) => console.error(err));
 
         // Listen for real-time messages
-        socket.on(`chat:${rid}:${uid}`, (newMessage) => {
-            setGetessage((prev) => [...prev, newMessage]);
-            scrollToBottom();
-        });
+    //     socket.on(`chat:${rid}:${uid}`, (newMessage) => {
+    //         setGetessage((prev) => [...prev, newMessage]);
+    //         scrollToBottom();
+    //     });
 
-        return () => {
-            socket.off(`chat:${rid}:${uid}`);
-        };
-    }, [uid, rid]);
+    //     return () => {
+    //         socket.off(`chat:${rid}:${uid}`);
+    //     };
+    // }, [uid, rid]);
+    },[]);
 
-    const fetchMessages = () => {
-        axios
-            .post('https://job-portal-server-orpin.vercel.app/getchat', { uid, rid })
-            .then((res) => {
-                setGetessage(res.data);
-                scrollToBottom();
-            })
-            .catch((err) => console.error(err));
-    };
+    // const fetchMessages = () => {
+    //     axios
+    //         .post('https://job-portal-server-orpin.vercel.app/getchat', { uid, rid })
+    //         .then((res) => {
+    //             setGetessage(res.data);
+    //             scrollToBottom();
+    //         })
+    //         .catch((err) => console.error(err));
+    // };
 
-    const handleSendMessage = () => {
-        if (!message) return;
+    // const handleSendMessage = () => {
+    //     if (!message) return;
 
-        const messageData = { uid, rid, message };
-        // Emit the message via Socket.IO
-        socket.emit('sendMessage', messageData);
+    //     const messageData = { uid, rid, message };
+    //     // Emit the message via Socket.IO
+    //     socket.emit('sendMessage', messageData);
 
-        // Optimistically update the UI
-        setGetessage((prev) => [...prev, messageData]);
-        setMessage("");
-        scrollToBottom();
-    };
+    //     // Optimistically update the UI
+    //     setGetessage((prev) => [...prev, messageData]);
+    //     setMessage("");
+    //     scrollToBottom();
+    // };
 
     return (
         <div className="flex flex-col w-full h-full bg-gray-100 shadow-lg rounded-lg">
