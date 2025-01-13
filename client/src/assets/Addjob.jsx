@@ -28,7 +28,7 @@ function Addjob() {
       .post("http://localhost:3001/createjob", formdata)
       .then((res) => {
         navigate("/find");
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   };

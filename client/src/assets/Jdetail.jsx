@@ -14,13 +14,13 @@ const Jdetails = () => {
   const [userdata, setUserdata] = useState(null);
   const [candidate, setCandidate] = useState(0);
   const [error, setError] = useState(null);
-  console.log(uid)
+  // console.log(uid)
   // Fetch applied data
   useEffect(() => {
     axios
       .get(`http://localhost:3001/getapplied/${jid}`)
       .then((res) => {
-        console.log(res.data)
+        (res.data)
         setApplaydata(res.data || [])
         setCandidate(res.data.length)
       })
@@ -43,7 +43,7 @@ const Jdetails = () => {
     axios
       .get(`http://localhost:3001/showjobinfo/${jid}`)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setJobdata(res.data)
       })
       .catch((err) => setError("Failed to load job details"));

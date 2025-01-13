@@ -23,7 +23,7 @@ const Myjob = () => {
       .get(`http://localhost:3001/getuser/${uid}`)
       .then((res) => {
         setUserdata(res.data);
-        console.log(res.data)
+        // console.log(res.data)
       })
       .catch((err) => console.error(err));
   }, [uid])
@@ -69,7 +69,8 @@ const Myjob = () => {
         .delete("http://localhost:3001/deljob/"+id)
         .then((res) => {
           // window.location.reload()
-          console.log(res.data);})
+          // console.log(res.data);
+        })
         .catch((err) => {console.log(err); });
 };
 

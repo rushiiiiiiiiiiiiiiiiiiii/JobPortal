@@ -29,7 +29,7 @@ const Register = () => {
     axios
       .post('http://localhost:3001/reg', formdata)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setLoginu(true)
       })
       .catch((err) => console.log(err));

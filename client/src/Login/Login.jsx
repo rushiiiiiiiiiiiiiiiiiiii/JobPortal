@@ -13,7 +13,7 @@ const Login = ({ setLogin }) => {
       .post('http://localhost:3001/login', { email, password })
       .then((res) => {
         if (res.data && res.data._id) {
-          console.log("Login successful", res.data);
+          // console.log("Login successful", res.data);
           sessionStorage.setItem('userid', res.data._id);
           setLogin(false);
         } else {

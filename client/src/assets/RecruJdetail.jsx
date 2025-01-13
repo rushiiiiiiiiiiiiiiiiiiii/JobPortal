@@ -22,7 +22,7 @@ const RecruJdetail = () => {
     axios
       .get(`http://localhost:3001/getapplied/${jid}`)
       .then((res) =>{ 
-        console.log(res.data)
+        // console.log(res.data)
         setCandidate(res.data.length)
         setApplaydata(res.data || [])
       })
@@ -41,7 +41,7 @@ const RecruJdetail = () => {
     axios
       .get(`http://localhost:3001/getalluser`)
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setUseralldata(res.data)})
       .catch((err) => setError("Failed to load user data"));
   }, [uid]);

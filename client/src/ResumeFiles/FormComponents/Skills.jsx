@@ -46,19 +46,19 @@ const Skills = () => {
   //     alert('Failed to save skills.');
   //   }
   // };
-  console.log(resumeInfo)
+  // console.log(resumeInfo)
   const all = {
     ...resumeInfo,
     resumeId,
   }
   const sub = (e) => {
-    console.log("Clicked")
+    // console.log("Clicked")
     e.preventDefault();
     axios
       .post('http://localhost:3001/persnoldetail', all)
       .then((res) => {
         navigate(`/finalresume/${res.data._id}`)
-        console.log(res.data)
+        // console.log(res.data)
       })
       .catch((err) => console.log(err));
 
