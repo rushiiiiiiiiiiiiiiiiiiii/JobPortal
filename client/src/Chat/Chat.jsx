@@ -4,10 +4,11 @@ import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa";
 
 const socket = io('https://job-portal-server-orpin.vercel.app', {
+    path: '/socket.io',
     withCredentials: true,
     transports: ['websocket', 'polling'],
-    path: "/socket.io",
 });
+
 
 
 
