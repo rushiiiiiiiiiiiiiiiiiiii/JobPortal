@@ -60,7 +60,7 @@ server.listen(3001, () => {
 });
 
 
-const con = mongoose.connect('mongodb://127.0.0.1:27017/job')
+const con = mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/+')
 if (con) {
     console.log("connected")
 } else {
