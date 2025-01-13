@@ -27,7 +27,7 @@ const Register = () => {
     formdata.append('password', password);
 
     axios
-      .post('https://job-portal-server-orpin.vercel.app/reg', formdata)
+      .post('http://localhost:3001/reg', formdata)
       .then((res) => {
         // console.log(res.data);
         setLoginu(true)

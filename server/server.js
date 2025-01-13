@@ -12,56 +12,52 @@ const ChatModel = require('./Schemas/Jobchat')
 const ResumenameModel = require('./Schemas/ResumeName')
 const ResumePersnolModel = require('./Schemas/ResumePersnol')
 const ResumeSummaryModel = require('./Schemas/ResumeSummary')
-// const { Server } = require('socket.io');
-// const http = require('http');
+const { Server } = require('socket.io');
+const http = require('http');
 
 app.use(
     cors({
         origin: 'http://localhost:5173',
         methods:['GET',  'POST'],
         credentials: true,
-        origin: 'https://job-portal-client-psi.vercel.app', // Allow your client URL
-        methods: ['GET', 'POST', 'DELETE'], // Specify allowed methods
-        credentials: true, // Allow credentials (cookies, headers)
     })
 );
 app.use(express.json())
 app.use(express.static('images'));
 
-// const server = http.createServer(app); // Create an HTTP server
-// const io = new Server(server, {
-//     cors: {
-//         origin: 'https://job-portal-client-psi.vercel.app',
-//         methods: ['GET', 'POST']
-//     },
-//     path: "/socket.io",
-// });
+const server = http.createServer(app); // Create an HTTP server
+const io = new Server(server, {
+    cors: {
+        origin: 'http://localhost:5173',
+        methods: ['GET', 'POST']
+    },
+});
 
 
 
 // Socket.IO Connection Handling
-// io.on('connection', (socket) => {
-//     console.log('A user connected: ', socket.id);
+io.on('connection', (socket) => {
+    console.log('A user connected: ', socket.id);
 
-     // Listen for chat messages
-    // socket.on('sendMessage', (messageData) => {
+    //  Listen for chat messages
+    socket.on('sendMessage', (messageData) => {
         // Save the message to the database
-        // const { uid, rid, message } = messageData;
-        // ChatModel.create({ uid, rid, message })
-        //     .then(() => {
+        const { uid, rid, message } = messageData;
+        ChatModel.create({ uid, rid, message })
+            .then(() => {
                 // Emit the message to both sender and receiver
-    //             io.emit(`chat:${uid}:${rid}`, messageData);
-    //             io.emit(`chat:${rid}:${uid}`, messageData);
-    //         })
-    //         .catch(err => console.error(err));
-    // });
+                io.emit(`chat:${uid}:${rid}`, messageData);
+                io.emit(`chat:${rid}:${uid}`, messageData);
+            })
+            .catch(err => console.error(err));
+    });
 
-//     socket.on('disconnect', () => {
-//         console.log('User disconnected: ', socket.id);
-//     });
-// });
+    socket.on('disconnect', () => {
+        console.log('User disconnected: ', socket.id);
+    });
+});
 
-app.listen(3001, () => {
+server.listen(3001, () => {
     console.log('Server running on port 3001');
 });
 
@@ -91,9 +87,9 @@ app.post('/createjob', upload.single('image'), (req, res) => {
         .catch(err => res.json(err))
 
 })
-app.get('/',(req,res)=>{
-  res.send(hello)
-})
+// app.get('/',(req,res)=>{
+//   res.send(hello)
+// })
 app.get('/showjob', (req, res) => {
     JobModel.find({})
         .then(jobport => res.json(jobport))

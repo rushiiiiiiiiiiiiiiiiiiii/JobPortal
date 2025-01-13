@@ -25,7 +25,7 @@ function Addjob() {
     formdata.append("detail", detail);
 
     axios
-      .post("https://job-portal-server-orpin.vercel.app/createjob", formdata)
+      .post("http://localhost:3001/createjob", formdata)
       .then((res) => {
         navigate("/find");
         // console.log(res);

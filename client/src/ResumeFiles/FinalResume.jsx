@@ -50,7 +50,7 @@ const FinalResume = () => {
   // Fetching Resume Data from Database
   useEffect(() => {
     axios
-      .get(`https://job-portal-server-orpin.vercel.app/getresumedata/${resumeId}`)
+      .get(`http://localhost:3001/getresumedata/${resumeId}`)
       .then((res) => {
         setResumedata(res.data);
       })
