@@ -16,7 +16,7 @@ const { Server } = require('socket.io');
 const http = require('http');
 
 app.use(cors({
-  origin: 'https://job-portal-client-psi.vercel.app',
+  origin: 'https://job-portal-client-psi.vercel.app/',
   credentials: true,
 }));
 app.use(express.json())
@@ -25,7 +25,7 @@ app.use(express.static('images'));
 const server = http.createServer(app); // Create an HTTP server
 const io = new Server(server, {
     cors: {
-        origin: 'https://job-portal-client-psi.vercel.app',
+        origin: 'https://job-portal-client-psi.vercel.app/',
         methods: ['GET', 'POST']
     },
     path: "/socket.io",
