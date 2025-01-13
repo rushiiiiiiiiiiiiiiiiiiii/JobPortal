@@ -78,7 +78,9 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({ storage: storage })
-
+app.get('/', (req,res)=>{
+    res.send("hello")
+})
 app.post('/createjob', upload.single('image'), (req, res) => {
     const { userid, title, desc, location, cname, detail } = req.body
     const image = req.file.filename;
