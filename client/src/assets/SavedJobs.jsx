@@ -11,7 +11,7 @@ const SavedJobs = () => {
   useEffect(() => {
     const fetchSavedJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/savejob/${id}`);
+        const res = await axios.get(`https://job-portal-server-orpin.vercel.app/savejob/${id}`);
         setDatalike(res.data);
         // console.log("Saved Jobs Data:", res.data);
       } catch (err) {
@@ -24,7 +24,7 @@ const SavedJobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/showjob");
+        const res = await axios.get("https://job-portal-server-orpin.vercel.app/showjob");
         setDatajob(res.data || []);
         // console.log("All Jobs Data:", res.data); 
       } catch (err) {
@@ -64,7 +64,7 @@ const SavedJobs = () => {
                         {user?.title}
                       </h2>
                       <img
-                        src={`http://localhost:3001/${user?.image}`}
+                        src={`https://job-portal-server-orpin.vercel.app/${user?.image}`}
                         className="w-10 h-10 rounded-full object-contain"
                       />
                     </div>

@@ -46,7 +46,7 @@ const Nav = () => {
     useEffect(() => {
         if (id) {
             axios
-                .get(`http://localhost:3001/getuser/${id}`)
+                .get(`https://job-portal-server-orpin.vercel.app/getuser/${id}`)
                 .then((res) => setUserdata(res.data))
                 .catch((err) => console.error(err));
         }
@@ -87,7 +87,7 @@ const Nav = () => {
                     <img
                         src={
                             userdata && userdata.image
-                                ? `http://localhost:3001/${userdata.image}`
+                                ? `https://job-portal-server-orpin.vercel.app/${userdata.image}`
                                 : './public/image/default-profile.png'
                         }
                         alt="Profile"
@@ -99,7 +99,7 @@ const Nav = () => {
                             {userdata ? (
                                 <div className="flex items-center mb-4">
                                     <img
-                                        src={`http://localhost:3001/${userdata.image}`}
+                                        src={`https://job-portal-server-orpin.vercel.app/${userdata.image}`}
                                         alt="Profile"
                                         className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-700 mr-3"
                                     />
