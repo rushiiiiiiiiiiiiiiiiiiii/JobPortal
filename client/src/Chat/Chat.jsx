@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa";
 
-const socket = io('http://localhost:3001', {
+const socket = io('https://jobportal-server-nthd.onrender.com', {
     withCredentials: true,
     transports: ['websocket', 'polling'],
 });
@@ -24,7 +24,7 @@ const Chat = ({ uid }) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3001/getuser/${uid}`)
+            .get(`https://jobportal-server-nthd.onrender.com/getuser/${uid}`)
             .then((res) => {
                 setUserdata(res.data);
                 fetchMessages();
@@ -44,7 +44,7 @@ const Chat = ({ uid }) => {
 
     const fetchMessages = () => {
         axios
-            .post('http://localhost:3001/getchat', { uid, rid })
+            .post('https://jobportal-server-nthd.onrender.com/getchat', { uid, rid })
             .then((res) => {
                 setGetessage(res.data);
                 scrollToBottom();
@@ -71,7 +71,7 @@ const Chat = ({ uid }) => {
             <div className="flex items-center bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-t-lg shadow-md">
                 <img
                     className="w-12 h-12 rounded-full object-cover border-2 border-white"
-                    src={`http://localhost:3001/${userdata?.image || ""}`}
+                    src={`https://jobportal-server-nthd.onrender.com/${userdata?.image || ""}`}
                     alt={userdata?.name || "User"}
                 />
                 <div className="ml-4">
@@ -133,7 +133,7 @@ export default Chat;
 
 //   useEffect(() => {
 //     axios
-//       .get(`http://localhost:3001/getuser/${uid}`)
+//       .get(`https://jobportal-server-nthd.onrender.com/getuser/${uid}`)
 //       .then((res) => {
 //         setUserdata(res.data);
 //         getmes();
@@ -143,7 +143,7 @@ export default Chat;
 
 //   const getmes = () => {
 //     axios
-//       .post('http://localhost:3001/getchat', { uid, rid })
+//       .post('https://jobportal-server-nthd.onrender.com/getchat', { uid, rid })
 //       .then((res) => {
 //         setGetessage(res.data);
 //         scrollToBottom();
@@ -154,7 +154,7 @@ export default Chat;
 //   const handleSendMessage = () => {
 //     if (!message) return;
 //     axios
-//       .post('http://localhost:3001/chat', { uid, rid, message })
+//       .post('https://jobportal-server-nthd.onrender.com/chat', { uid, rid, message })
 //       .then(() => {
 //         setMessage("");
 //         getmes();
@@ -168,7 +168,7 @@ export default Chat;
 //       <div className="flex items-center bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 rounded-t-lg shadow-md">
 //         <img
 //           className="w-12 h-12 rounded-full object-cover border-2 border-white"
-//           src={`http://localhost:3001/${userdata?.image || ""}`}
+//           src={`https://jobportal-server-nthd.onrender.com/${userdata?.image || ""}`}
 //           alt={userdata?.name || "User"}
 //         />
 //         <div className="ml-4">

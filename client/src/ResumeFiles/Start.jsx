@@ -33,7 +33,7 @@ function Start() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/getresumealldata")
+      .get("https://jobportal-server-nthd.onrender.com/getresumealldata")
       .then((res) => {
         setResumeAlldata(res.data);
       })
@@ -42,7 +42,7 @@ function Start() {
 
   const del = (id) => {
     axios
-      .delete(`http://localhost:3001/delresume/${id}`)
+      .delete(`https://jobportal-server-nthd.onrender.com/delresume/${id}`)
       .then((res) => {
         window.location.reload()
         console.log(res.data);
