@@ -85,6 +85,9 @@ app.post('/createjob', upload.single('image'), (req, res) => {
         .catch(err => res.json(err))
 
 })
+app.get('/',(req,res)=>{
+  res.send(hello)
+}
 app.get('/showjob', (req, res) => {
     JobModel.find({})
         .then(jobport => res.json(jobport))
