@@ -62,7 +62,7 @@ server.listen(3001, () => {
 });
 
 
-const con = mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/+')
+const con = mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0')
 if (con) {
     console.log("connected")
 } else {
