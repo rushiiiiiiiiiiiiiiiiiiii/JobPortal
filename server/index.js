@@ -5,7 +5,7 @@ import multer from 'multer';
 import path from 'path';
 import { Server } from 'socket.io';
 import http from 'http';
-import  urlencoded  from 'body-parser';
+import bodyParser from 'body-parser';
 
 // Import Models
 import JobModel from './Schemas/Addjob.js';
@@ -19,24 +19,19 @@ import ResumePersnolModel from './Schemas/ResumePersnol.js';
 const app = express();
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0', { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
-})
+mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error("MongoDB connection error:", err));
 
 const dirname = path.resolve();
 
 
-
-app.use(urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
     origin: "http://localhost:5173",
     credentials: true
 }
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use(express.static('images'));
 
@@ -77,6 +72,7 @@ const upload = multer({ storage: storage });
 
 // Routes
 
+// Create Job
 app.post('/createjob', upload.single('image'), (req, res) => {
     const { userid, title, desc, location, cname, detail } = req.body;
     const image = req.file.filename;
@@ -85,12 +81,14 @@ app.post('/createjob', upload.single('image'), (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Show Jobs
 app.get('/showjob', (req, res) => {
     JobModel.find({})
         .then(jobport => res.json(jobport))
         .catch(err => res.json(err));
 });
 
+// Show User's Jobs
 app.post('/showjobmytype', (req, res) => {
     const { uid } = req.body;
     JobModel.find({ userid: uid })
@@ -98,6 +96,7 @@ app.post('/showjobmytype', (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Register User
 app.post('/reg', upload.single('image'), (req, res) => {
     const { name, type, email, password } = req.body;
     const image = req.file.filename;
@@ -106,6 +105,7 @@ app.post('/reg', upload.single('image'), (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Login User
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
     LoginModel.findOne({ email, password })
@@ -113,6 +113,7 @@ app.post('/login', (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Get User by ID
 app.get('/getuser/:id', (req, res) => {
     const id = req.params.id;
     LoginModel.findById(id)
@@ -120,12 +121,14 @@ app.get('/getuser/:id', (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Get All Users
 app.get('/getalluser', (req, res) => {
     LoginModel.find({})
         .then(joblogins => res.json(joblogins))
         .catch(err => res.json(err));
 });
 
+// Like/Unlike Job
 app.post("/joblike", async (req, res) => {
     const { uid, jobid } = req.body;
 
@@ -149,6 +152,7 @@ app.post("/joblike", async (req, res) => {
     }
 });
 
+// Get Liked Jobs by User ID
 app.get("/getlikedjobs/:uid", async (req, res) => {
     const { uid } = req.params;
 
@@ -166,12 +170,14 @@ app.get("/getlikedjobs/:uid", async (req, res) => {
     }
 });
 
+// Apply for Job
 app.post('/jobapplay', (req, res) => {
     ApplayModel.create(req.body)
         .then(jobapplay => res.json(jobapplay))
         .catch(err => res.json(err));
 });
 
+// Get Applied Jobs by User ID
 app.get('/getmyjob/:id', (req, res) => {
     const uid = req.params.id;
     ApplayModel.find({ uid: uid })
@@ -179,6 +185,7 @@ app.get('/getmyjob/:id', (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Get Applicants for a Job by Job ID
 app.get('/getapplied/:jid', (req, res) => {
     const uid = req.params.jid;
     ApplayModel.find({ jobid: uid })
@@ -186,6 +193,7 @@ app.get('/getapplied/:jid', (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Delete Job by ID
 app.delete('/deljob/:id', (req, res) => {
     const id = req.params.id;
     JobModel.findByIdAndDelete(id)
@@ -212,6 +220,7 @@ app.post('/persnoldetail', (req, res) => {
         .catch((err) => res.json(err));
 });
 
+// Get Resume by ID
 app.get('/getresumedata/:resumeId', (req, res) => {
     const { resumeId } = req.params;
     ResumePersnolModel.find({ _id: resumeId })
@@ -219,12 +228,14 @@ app.get('/getresumedata/:resumeId', (req, res) => {
         .catch(err => res.json(err));
 });
 
+// Get All Resumes
 app.get('/getresumealldata', (req, res) => {
     ResumePersnolModel.find({})
         .then(resumepersnol => res.json(resumepersnol || []))
         .catch(err => res.json(err));
 });
 
+// Delete Resume by ID
 app.delete('/delresume/:id', (req, res) => {
     const { id } = req.params;
     ResumePersnolModel.findByIdAndDelete(id)
@@ -233,7 +244,6 @@ app.delete('/delresume/:id', (req, res) => {
 });
 
 app.use(express.static(path.join(dirname, "/client/dist")));
-
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(dirname, "client", "dist", "index.html"));
 });
