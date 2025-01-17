@@ -55,7 +55,7 @@ const Skills = () => {
     // console.log("Clicked")
     e.preventDefault();
     axios
-      .post('http://localhost:3001/persnoldetail', all)
+      .post('https://jobportal-server-fwl8.onrender.com/persnoldetail', all)
       .then((res) => {
         navigate(`/finalresume/${res.data._id}`)
         // console.log(res.data)
