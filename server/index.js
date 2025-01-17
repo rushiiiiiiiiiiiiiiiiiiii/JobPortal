@@ -28,7 +28,7 @@ const dirname = path.resolve();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://jobportal-server-fwl8.onrender.com",
     credentials: true
 }
 app.use(cors(corsOptions));
@@ -39,7 +39,7 @@ app.use(express.static('images'));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: 'https://jobportal-server-fwl8.onrender.com',
         methods: ['GET', 'POST']
     },
 });

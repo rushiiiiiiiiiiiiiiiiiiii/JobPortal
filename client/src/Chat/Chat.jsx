@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa";
 
-const socket = io('http://localhost:3001', {
+const socket = io('https://jobportal-server-fwl8.onrender.com', {
     withCredentials: true,
     transports: ['websocket', 'polling'],
 });
