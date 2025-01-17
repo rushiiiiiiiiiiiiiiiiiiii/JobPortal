@@ -1,4 +1,5 @@
-const mongoose =require('mongoose')
+import mongoose from 'mongoose';
+
 
     const ResumePersnolSchema = new mongoose.Schema({
         // resumeId:{type:String, required:true, unique:true},
@@ -27,5 +28,6 @@ const mongoose =require('mongoose')
     });
     
 const ResumePersnolModel = mongoose.model("resumepersnol", ResumePersnolSchema)
-module.exports = ResumePersnolModel
+export default ResumePersnolModel;
+
 

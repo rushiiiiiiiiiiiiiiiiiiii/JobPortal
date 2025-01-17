@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 
 const ChatSchema = new mongoose.Schema({
     uid:String,
@@ -7,4 +7,4 @@ const ChatSchema = new mongoose.Schema({
 })
 
 const ChatModel = mongoose.model("jobchat", ChatSchema)
-module.exports = ChatModel
+export default ChatModel;

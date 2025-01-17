@@ -11,7 +11,7 @@ const SavedJobs = () => {
   useEffect(() => {
     const fetchSavedJobs = async () => {
       try {
-        const res = await axios.get(`localhost://127.0.0.1:3001/savejob/${id}`);
+        const res = await axios.get(`http://localhost:3001/savejob/${id}`);
         setDatalike(res.data);
         // console.log("Saved Jobs Data:", res.data);
       } catch (err) {
@@ -24,7 +24,7 @@ const SavedJobs = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get("localhost://127.0.0.1:3001/showjob");
+        const res = await axios.get("http://localhost:3001/showjob");
         setDatajob(res.data || []);
         // console.log("All Jobs Data:", res.data); 
       } catch (err) {
@@ -64,7 +64,7 @@ const SavedJobs = () => {
                         {user?.title}
                       </h2>
                       <img
-                        src={`localhost://127.0.0.1:3001/${user?.image}`}
+                        src={`http://localhost:3001/${user?.image}`}
                         className="w-10 h-10 rounded-full object-contain"
                       />
                     </div>

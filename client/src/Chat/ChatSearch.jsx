@@ -13,7 +13,7 @@ const Searchchat = () => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://jobportal-server-nthd.onrender.com/getapplied/${jid}`)
+  //     .get(`http://localhost:3001/getapplied/${jid}`)
   //     .then((res) =>{ 
   //       console.log(res.data)
   //       setCandidate(res.data.length)
@@ -24,12 +24,12 @@ const Searchchat = () => {
 
   useEffect(() => {
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/getuser/${userid}`)
+      .get(`http://localhost:3001/getuser/${userid}`)
       .then((res) => setUserType(res.data.type))
       .catch((err) => console.error(err));
 
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/getalluser`)
+      .get(`http://localhost:3001/getalluser`)
       .then((res) => {
         const filteredUsers = res.data.filter((user) => user._id !== userid);
         setUseralldata(filteredUsers);
@@ -70,7 +70,7 @@ const Searchchat = () => {
                 className="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-100 transition-all"
               >
                 <img
-                  src={`https://jobportal-server-nthd.onrender.com/${user?.image}`}
+                  src={`http://localhost:3001/${user?.image}`}
                   className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
                   alt={user?.name}
                 />

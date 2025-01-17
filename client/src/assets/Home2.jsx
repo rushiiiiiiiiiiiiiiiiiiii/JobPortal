@@ -9,7 +9,7 @@ const Home2 = () => {
  const uid= sessionStorage.getItem("userid")
   useEffect(() => {
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/getuser/${uid}`)
+      .get(`http://localhost:3001/getuser/${uid}`)
       .then((res) => {
         // console.log(res.data)
         setUserdata(res.data)

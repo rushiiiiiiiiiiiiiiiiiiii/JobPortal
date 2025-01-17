@@ -27,7 +27,7 @@ const Register = () => {
     formdata.append('password', password);
 
     axios
-      .post('https://jobportal-server-nthd.onrender.com/reg', formdata)
+      .post('http://localhost:3001/reg', formdata)
       .then((res) => {
         // console.log(res.data);
         setLoginu(true)
@@ -158,7 +158,7 @@ export default Register;
 //   const Regsub = (e) => {
 //     e.preventDefault();
 //     axios
-//       .post('https://jobportal-server-nthd.onrender.com/login', {email,password})
+//       .post('http://localhost:3001/login', {email,password})
 //       .then((res) => {
 //         if(res.data.length>0){
 //             sessionStorage.setItem('userid', res.data[0]._id)

@@ -25,7 +25,7 @@ function Addjob() {
     formdata.append("detail", detail);
 
     axios
-      .post("https://jobportal-server-nthd.onrender.com/createjob", formdata)
+      .post("http://localhost:3001/createjob", formdata)
       .then((res) => {
         navigate("/find");
         // console.log(res);

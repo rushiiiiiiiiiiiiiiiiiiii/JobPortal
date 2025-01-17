@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose"
 
 const ApplaySchema = new mongoose.Schema({
     uid:String,
@@ -6,4 +6,4 @@ const ApplaySchema = new mongoose.Schema({
 })
 
 const ApplayModel = mongoose.model("jobapplay", ApplaySchema)
-module.exports = ApplayModel
+export default ApplayModel;

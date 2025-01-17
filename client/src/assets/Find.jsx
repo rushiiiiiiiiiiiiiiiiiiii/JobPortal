@@ -17,7 +17,7 @@ const Find = () => {
 
   useEffect(() => {
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/${uid}`)
+      .get(`http://localhost:3001/${uid}`)
       .then((res) => {
         setUserdata(res.data);
       })
@@ -26,7 +26,7 @@ const Find = () => {
 
   useEffect(() => {
     axios
-      .get("https://jobportal-server-nthd.onrender.com/showjob")
+      .get("http://localhost:3001/showjob")
       .then((res) => {
         setData(res.data || []);
       })
@@ -35,7 +35,7 @@ const Find = () => {
 
   useEffect(() => {
     axios
-      .post("https://jobportal-server-nthd.onrender.com/showjobmytype", { uid })
+      .post("http://localhost:3001/showjobmytype", { uid })
       .then((res) => {
         setDataoftype(res.data || []);
       })
@@ -55,7 +55,7 @@ const Find = () => {
 
   const toggleLike = (jobid, action) => {
     axios
-      .post("https://jobportal-server-nthd.onrender.com/joblike", { uid, jobid })
+      .post("http://localhost:3001/joblike", { uid, jobid })
       .then(() => {
         setLikedJobs((prev) => ({
           ...prev,
@@ -68,7 +68,7 @@ const Find = () => {
   useEffect(() => {
     // Fetch liked jobs for the logged-in user
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/getlikedjobs/${uid}`)
+      .get(`http://localhost:3001/getlikedjobs/${uid}`)
       .then((res) => {
         const likedJobsFromBackend = res.data || [];
         const likedJobsState = likedJobsFromBackend.reduce((acc, jobId) => {
@@ -160,7 +160,7 @@ const Find = () => {
                       {job.title}
                     </h2>
                     <img
-                      src={`https://jobportal-server-nthd.onrender.com/${job.image}`}
+                      src={`http://localhost:3001/${job.image}`}
                       alt={`${job.cname} Logo`}
                       className="w-14 h-14 object-contain"
                     />

@@ -20,7 +20,7 @@ const RecruJdetail = () => {
   // Fetch applied data
   useEffect(() => {
     axios
-      .get(`http://https://jobportal-server-nthd.onrender.com/getapplied/${jid}`)
+      .get(`http://http://localhost:3001/getapplied/${jid}`)
       .then((res) =>{ 
         // console.log(res.data)
         setCandidate(res.data.length)
@@ -32,14 +32,14 @@ const RecruJdetail = () => {
   // Fetch user data
   useEffect(() => {
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/getuser/${uid}`)
+      .get(`http://localhost:3001/getuser/${uid}`)
       .then((res) => setUserdata(res.data))
       .catch((err) => setError("Failed to load user data"));
   }, [uid]);
 
   useEffect(() => {
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/getalluser`)
+      .get(`http://localhost:3001/getalluser`)
       .then((res) => {
         // console.log(res.data)
         setUseralldata(res.data)})
@@ -49,7 +49,7 @@ const RecruJdetail = () => {
   // Fetch job details
   useEffect(() => {
     axios
-      .get(`https://jobportal-server-nthd.onrender.com/showjobinfo/${jid}`)
+      .get(`http://localhost:3001/showjobinfo/${jid}`)
       .then((res) => setJobdata(res.data))
       .catch((err) => setError("Failed to load job details"));
   }, [jid]);
@@ -57,7 +57,7 @@ const RecruJdetail = () => {
   // Fetch all jobs
   useEffect(() => {
     axios
-      .get("https://jobportal-server-nthd.onrender.com/showjob")
+      .get("http://localhost:3001/showjob")
       .then((res) => setDatajob(res.data || []))
       .catch((err) => setError("Failed to load jobs"));
   }, []);
@@ -65,8 +65,8 @@ const RecruJdetail = () => {
   // Apply for a job
   const send = async (jobid) => {
     try {
-      await axios.post("https://jobportal-server-nthd.onrender.com/jobapplay", { uid, jobid });
-      const res = await axios.get(`https://jobportal-server-nthd.onrender.com/getapplied/${jid}`);
+      await axios.post("http://localhost:3001/jobapplay", { uid, jobid });
+      const res = await axios.get(`http://localhost:3001/getapplied/${jid}`);
       setApplaydata(res.data || []);
       setError(null); // Clear any previous errors
     } catch (err) {
@@ -90,7 +90,7 @@ const RecruJdetail = () => {
             {/* Company Logo */}
             {jobdata?.image && (
               <img
-                src={`https://jobportal-server-nthd.onrender.com/${jobdata.image}`}
+                src={`http://localhost:3001/${jobdata.image}`}
                 alt="Company Logo"
                 className="w-20 h-20 object-contain mt-2 sm:mt-0 sm:ml-6"
               />

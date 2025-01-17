@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose';
 const LoginSchema = new mongoose.Schema({
     image:String,
     name:String,
@@ -7,4 +7,5 @@ const LoginSchema = new mongoose.Schema({
     password:Number
 })
 const LoginModel = mongoose.model('joblogin', LoginSchema)
-module.exports =  LoginModel;
+export default LoginModel;
+

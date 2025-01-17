@@ -10,7 +10,7 @@ const Login = ({ setLogin }) => {
   const Regsub = (e) => {
     e.preventDefault();
     axios
-      .post('https://jobportal-server-nthd.onrender.com/login', { email, password })
+      .post('http://localhost:3001/login', { email, password })
       .then((res) => {
         if (res.data && res.data._id) {
           // console.log("Login successful", res.data);
