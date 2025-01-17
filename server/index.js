@@ -19,7 +19,7 @@ import ResumePersnolModel from './Schemas/ResumePersnol.js';
 const app = express();
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/+', { 
+mongoose.connect('mongodb+srv://rushikesharote14:oqai74leLp6fpD5b@cluster0.e0v7z.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0', { 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
 })
