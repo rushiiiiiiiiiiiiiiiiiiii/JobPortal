@@ -119,7 +119,7 @@ const LandingPage = () => {
         <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center">What And Who We Help?</h2>
 
           <img
-            src="./public/image/banner.jpeg"
+            src="./dist/image/banner.jpeg"
             alt="Banner"
             className="w-full h-auto rounded-lg shadow-xl transform transition-all duration-300 "
           />

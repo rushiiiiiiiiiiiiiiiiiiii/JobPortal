@@ -33,7 +33,7 @@ function Start() {
 
   useEffect(() => {
     axios
-      .get("https://jobportal-server-fwl8.onrender.com/getresumealldata")
+      .get("https://jobportal-server-fwl8.onrender.com/getresumealldata/")
       .then((res) => {
         setResumeAlldata(res.data);
       })
