@@ -13,14 +13,14 @@ const Myjob = () => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`http://localhost:3001/getapplied/${jid}`)
+  //     .get(`https://jobportal-server-fwl8.onrender.com/getapplied/${jid}`)
   //     .then((res) => setApplaydata(res.data || []))
   //     .catch((err) => setError("Failed to load applied data"));
   // }, [jid]);
   
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getuser/${uid}`)
+      .get(`https://jobportal-server-fwl8.onrender.com/getuser/${uid}`)
       .then((res) => {
         setUserdata(res.data);
         // console.log(res.data)
@@ -32,7 +32,7 @@ const Myjob = () => {
     useEffect(() => {
     const fetchSavedJobs = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/getmyjob/${uid}`);
+        const res = await axios.get(`https://jobportal-server-fwl8.onrender.com/getmyjob/${uid}`);
         setDataapplay(res.data);
         // console.log(res.data);
       } catch (err) {
@@ -44,7 +44,7 @@ const Myjob = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/showjobmytype",{uid})
+      .post("https://jobportal-server-fwl8.onrender.com/showjobmytype",{uid})
       .then((res) => {
         setDataoftype(res.data || []);
         // console.log(res.data);  
@@ -55,7 +55,7 @@ const Myjob = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/showjob");
+        const res = await axios.get("https://jobportal-server-fwl8.onrender.com/showjob");
         setDatajob(res.data || []);
         // console.log(res.data); 
       } catch (err) {
@@ -66,7 +66,7 @@ const Myjob = () => {
   }, []);
   const del = (id) => {
     axios
-        .delete("http://localhost:3001/deljob/"+id)
+        .delete("https://jobportal-server-fwl8.onrender.com/deljob/"+id)
         .then((res) => {
           // window.location.reload()
           // console.log(res.data);
@@ -106,7 +106,7 @@ const Myjob = () => {
                         {user?.title}
                       </h2>
                       <img
-                        src={`http://localhost:3001/${user?.image}`}
+                        src={`https://jobportal-server-fwl8.onrender.com/${user?.image}`}
                         className="w-10 h-10 rounded-full object-contain"
                       />
                     </div>
@@ -158,7 +158,7 @@ const Myjob = () => {
                         {jobuid?.title}
                       </h2>
                       <img
-                        src={`http://localhost:3001/${jobuid?.image}`}
+                        src={`https://jobportal-server-fwl8.onrender.com/${jobuid?.image}`}
                         className="w-10 h-10 rounded-full object-contain"
                       />
                     </div>

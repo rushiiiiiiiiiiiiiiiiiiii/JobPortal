@@ -13,7 +13,7 @@ const Searchchat = () => {
 
   // useEffect(() => {
   //   axios
-  //     .get(`http://localhost:3001/getapplied/${jid}`)
+  //     .get(`https://jobportal-server-fwl8.onrender.com/getapplied/${jid}`)
   //     .then((res) =>{ 
   //       console.log(res.data)
   //       setCandidate(res.data.length)
@@ -24,12 +24,12 @@ const Searchchat = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getuser/${userid}`)
+      .get(`https://jobportal-server-fwl8.onrender.com/getuser/${userid}`)
       .then((res) => setUserType(res.data.type))
       .catch((err) => console.error(err));
 
     axios
-      .get(`http://localhost:3001/getalluser`)
+      .get(`https://jobportal-server-fwl8.onrender.com/getalluser`)
       .then((res) => {
         const filteredUsers = res.data.filter((user) => user._id !== userid);
         setUseralldata(filteredUsers);
@@ -70,7 +70,7 @@ const Searchchat = () => {
                 className="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-100 transition-all"
               >
                 <img
-                  src={`http://localhost:3001/${user?.image}`}
+                  src={`https://jobportal-server-fwl8.onrender.com/${user?.image}`}
                   className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
                   alt={user?.name}
                 />

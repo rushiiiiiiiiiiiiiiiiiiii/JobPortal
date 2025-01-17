@@ -50,7 +50,7 @@ const FinalResume = () => {
   // Fetching Resume Data from Database
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/getresumedata/${resumeId}`)
+      .get(`https://jobportal-server-fwl8.onrender.com/getresumedata/${resumeId}`)
       .then((res) => {
         setResumedata(res.data);
       })

@@ -25,7 +25,7 @@ function Addjob() {
     formdata.append("detail", detail);
 
     axios
-      .post("http://localhost:3001/createjob", formdata)
+      .post("https://jobportal-server-fwl8.onrender.com/createjob", formdata)
       .then((res) => {
         navigate("/find");
         // console.log(res);
