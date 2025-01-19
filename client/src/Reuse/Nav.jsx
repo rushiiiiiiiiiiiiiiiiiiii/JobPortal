@@ -67,7 +67,7 @@ const Nav = () => {
 
             {/* Notification Icon */}
             <Link to="/chatsearch">
-                <div className="absolute top-7 right-16 sm:right-28 text-xl sm:text-2xl cursor-pointer">
+                <div className="absolute top-7 right-20 sm:right-28 text-xl sm:text-2xl cursor-pointer">
                     <FaBell />
                 </div>
             </Link>
