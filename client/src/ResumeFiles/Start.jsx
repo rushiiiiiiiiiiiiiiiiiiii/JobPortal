@@ -8,6 +8,7 @@ function Start() {
   const [resumealldata, setResumeAlldata] = useState([]);
   const [openModalId, setOpenModalId] = useState(null); // Track the opened modal's resume ID
   const navigate = useNavigate();
+  const id = sessionStorage.getItem("userid")
 
 
 
@@ -33,7 +34,7 @@ function Start() {
 
   useEffect(() => {
     axios
-      .get("https://jobportal-server-fwl8.onrender.com/getresumealldata/")
+      .get("https://jobportal-server-fwl8.onrender.com/getresumealldata/" +id)
       .then((res) => {
         setResumeAlldata(res.data);
       })

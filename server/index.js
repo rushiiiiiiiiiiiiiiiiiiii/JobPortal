@@ -229,8 +229,9 @@ app.get('/getresumedata/:resumeId', (req, res) => {
 });
 
 // Get All Resumes
-app.get('/getresumealldata', (req, res) => {
-    ResumePersnolModel.find({})
+app.get('/getresumealldata/:id', (req, res) => {
+    const id  =  req.params.id
+    ResumePersnolModel.findById(id)
         .then(resumepersnol => res.json(resumepersnol || []))
         .catch(err => res.json(err));
 });
